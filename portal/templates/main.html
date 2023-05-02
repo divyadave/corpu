@@ -1,0 +1,39 @@
+{% load bootstrap5 %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Corpu App</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+        <style>
+            body {
+                background-color: #f1efeff2;
+                font-family: 'Nurito', sans-serif;
+                padding-top: 50px;
+
+            }
+            h1,h2,h3,h4,h5,h6 {
+                font-family: 'Raleway', sans-serif;
+                
+            }
+            a,p {
+                color: #4b4b4b;
+            }
+           
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </body>
+</html>
+</html>
