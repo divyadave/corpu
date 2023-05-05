@@ -41,3 +41,7 @@ class CustomRegister(FormView):
         if self.request.user.is_authenticated:
             return redirect('detail')
         return super(CustomRegister,self).get( *args, **kwargs)
+
+def main(request):
+    template = loader.get_template('main.html')
+    return HttpResponse(template.render())
