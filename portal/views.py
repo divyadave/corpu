@@ -50,11 +50,12 @@ class CustomRegister(FormView):
 
 
 def main(request):
-    template = loader.get_template('main.html')
+    template = loader.get_template('home.html')
     return HttpResponse(template.render())
 
 
 def unit_page(request):
+
     form = UnitForm()
     return render(request, 'unit_page.html', {'form': form})
 
@@ -63,9 +64,7 @@ def apply_view(request):
     if request.method == 'POST':
         form = UnitForm(request.POST)
         if form.is_valid():
-            # Process the form data and perform desired actions
-            # ...
-
+            form.save()
             return render(request, 'success.html')
     else:
         form = UnitForm()

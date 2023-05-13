@@ -1,0 +1,120 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.7;
+    position: relative;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+body:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: .3s all ease;
+    -o-transition: .3s all ease;
+    transition: .3s all ease;
+}
+.home-section h1 {
+    font-size: 3rem;
+    color: #fff;
+    font-weight: 200;
+}
+.section-hero, .section-hero > .container > .row {
+    height: 100vh;
+    min-height: 900px;
+}
+.passionate-text {
+    color: #fff;
+}
+.section-hero.overlay {
+    position: relative;
+}
+.site-navbar .site-logo a {
+    color: #fff;
+    font-size: 1.5rem;
+    letter-spacing: .2rem;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.bg-image {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.home-section {
+    position: relative;
+}
+.section-hero.overlay:before {
+    z-index: 1;
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+.site-navbar {
+    margin-bottom: 0px;
+    z-index: 1999;
+    position: absolute;
+    width: 100%;
+    top: 2rem;
+}
+.site-navbar .site-logo {
+    position: absolute;
+    left: 4%;
+}
+.site-navbar .site-navigation {
+    position: absolute;
+    left: 81%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    z-index: 5;
+}
+.site-navbar .right-cta-menu {
+    position: absolute;
+    right: -34%;
+}
+.site-navbar .site-navigation .site-menu {
+    margin-bottom: 0;
+}
+.site-navbar .site-navigation .site-menu > li {
+    display: inline-block;
+}
+.site-navbar .site-navigation .site-menu .active {
+    color: #fff;
+    display: inline-block;
+    padding: 5px 20px;
+}
+.site-navbar .site-navigation .site-menu > li > a {
+    padding: 20px 20px !important;
+    color: rgba(255, 255, 255, 0.5);
+    display: inline-block;
+    text-decoration: none !important;
+}
+.card {
+    border: 2px solid rgb(0 0 0 / 0%);
+}
+.card-body {
+    background-color: wheat;
+}
+.card-title {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+.card-text:last-child {
+    color: black;
+    font-weight: 600;
+}
