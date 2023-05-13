@@ -10,6 +10,9 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'profile.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'unit.css' %}">
         {% bootstrap_css %}
         {% bootstrap_javascript %}
         <style>
@@ -26,7 +29,7 @@
             a,p {
                 color: #4b4b4b;
             }
-           
+          
         </style>
     </head>
     <body>

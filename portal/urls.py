@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth.views import LogoutView
-from .views import TaskList, CustomLogin, CustomRegister, main, unit_page, apply_view
+from .views import TaskList, CustomLogin, CustomRegister, main, sessionalProfile, unit_page, apply_view
 
 urlpatterns = [
     path('', main, name="home"),
@@ -10,4 +10,6 @@ urlpatterns = [
     path('detail/', TaskList, name='detail'),
     path('unit/', unit_page, name='unit_page'),
     path('apply/', apply_view, name='apply'),
+    path('detail/', TaskList , name='detail'),
+     path('profile/', sessionalProfile , name='profile')
 ]

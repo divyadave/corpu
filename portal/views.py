@@ -18,6 +18,9 @@ def TaskList(LoginRequiredMixin, request):
     template = loader.get_template('detail.html')
     return HttpResponse(template.render())
 
+def sessionalProfile(request):
+    template = loader.get_template('sessionalprofile.html')
+    return HttpResponse(template.render())
 
 class CustomLogin(LoginView):
     template_name = 'login.html'
