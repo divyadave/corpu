@@ -1,0 +1,95 @@
+<!-- unit_page.html -->
+{% extends 'main.html' %}
+{% block content %}
+<h1>Unit Page</h1>
+  <div class="container mt-5">
+    <h1>Select a Unit</h1>
+    <form id="unitForm" method="POST" action="{% url 'apply' %}">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="unitName">Unit Name:</label>
+        <select class="form-control" id="unitName" name="unitName">
+          <option value="">-- Select Unit --</option>
+          <option value="COS60001">INTRO TO DATASCIENCE</option>
+          <option value="COS60002">INTRO TO COMPUTER SCIENCE</option>
+          <option value="COS60003">DATABASE SYSTEMS</option>
+          {% for unit in units %}
+            <option value="{{ unit }}">{{ unit }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="courseDescription">Course Description:</label>
+        <textarea class="form-control" id="courseDescription" name="courseDescription" rows="3" readonly></textarea>
+      </div>
+      <div class="form-group">
+        <label for="requiredQualification">Required Qualification:</label>
+        <input type="text" class="form-control" id="requiredQualification" name="requiredQualification" readonly>
+      </div>
+      <div class="form-group">
+        <label for="teachingMaterials">Teaching Materials:</label>
+        <input type="text" class="form-control" id="teachingMaterials" name="teachingMaterials" readonly>
+      </div>
+      <div class="form-group">
+        <label for="sessionTimes">Session Times:</label>
+        <input type="text" class="form-control" id="sessionTimes" name="sessionTimes" readonly>
+      </div>
+      <div class="form-group">
+        <label for="lecturer">Lecturer:</label>
+        <input type="text" class="form-control" id="lecturer" name="lecturer" readonly>
+      </div>
+      <div class="form-group">
+        <label for="lecturerEmail">Lecturer Email:</label>
+        <input type="text" class="form-control" id="lecturerEmail" name="lecturerEmail" readonly>
+      </div>
+      <button type="submit" class="btn btn-primary">Apply</button>
+    </form>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#unitName").change(function() {
+        var unitName = $(this).val();
+        updateFormFields(unitName);
+      });
+
+      function updateFormFields(unitName) {
+        if (unitName === "COS60001") {
+          $("#courseDescription").val("This course provides an introduction to the field of data science. Students will learn about data manipulation, analysis, and visualization techniques using various tools and programming languages.");
+          $("#requiredQualification").val("Bachelor's degree in a related field");
+          $("#teachingMaterials").val("Textbook: Introduction to Data Science, Online tutorials and exercises");
+          $("#sessionTimes").val("Tuesdays and Thursdays, 10:00 AM - 12:00 PM");
+          $("#lecturer").val("Dr. John Smith");
+          $("#lecturerEmail").val("john.smith@example.com");
+        }
+        else if (unitName === "COS60002") {
+          $("#courseDescription").val("This course provides an introduction to the field of computer science. Students will learn about programming concepts, algorithms, data structures, and problem-solving techniques.");
+          $("#requiredQualification").val("No specific qualification required");
+          $("#teachingMaterials").val("Textbook: Introduction to Computer Science, Programming exercises and assignments");
+          $("#sessionTimes").val("Mondays and Wednesdays, 2:00 PM - 4:00 PM");
+          $("#lecturer").val("Dr. Jane Doe");
+          $("#lecturerEmail").val("jane.doe@example.com");
+        } else if (unitName === "COS60003") {
+          $("#courseDescription").val("This course covers the fundamentals of database systems, including data modeling, relational databases, SQL querying, database design, and database management.");
+          $("#requiredQualification").val("No specific qualification required");
+          $("#teachingMaterials").val("Textbook: Database Systems: Concepts, Design, and Applications, Lecture slides and exercises");
+          $("#sessionTimes").val("Tuesdays and Thursdays, 10:00 AM - 12:00 PM");
+          $("#lecturer").val("Prof. Paul Smith");
+          $("#lecturerEmail").val("paul.smith@example.com");
+        } else {
+          // Clear the form fields if no unit is selected
+          $("#courseDescription").val("");
+          $("#requiredQualification").val("");
+          $("#teachingMaterials").val("");
+          $("#sessionTimes").val("");
+          $("#lecturer").val("");
+          $("#lecturerEmail").val("");
+        }
+      }
+    });
+  </script>
+
+{% endblock content %}
+
