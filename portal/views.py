@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -10,17 +11,18 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.template import loader
-from django.http import JsonResponse
-from .forms import UnitForm
+from .forms import UnitForm, RegistrationForm
 
 
-def TaskList(LoginRequiredMixin, request):
-    template = loader.get_template('detail.html')
-    return HttpResponse(template.render())
+@login_required
+def dashboard(request):
+    
+    return render(request, 'dashboard.html')
+
 
 def sessionalProfile(request):
-    template = loader.get_template('sessionalprofile.html')
-    return HttpResponse(template.render())
+    
+    return render(request, 'sessionalprofile.html')
 
 class CustomLogin(LoginView):
     template_name = 'login.html'
@@ -28,32 +30,40 @@ class CustomLogin(LoginView):
     redirect_authenticated_user = True
 
     def get_success_url(self):
-        return reverse_lazy('detail')
+        return reverse_lazy('dashboard')
 
 
 class CustomRegister(FormView):
     template_name = 'register.html'
-    form_class = UserCreationForm
+    form_class = RegistrationForm
     redirect_authenticated_user = True
-    success_url = reverse_lazy(True)
+    success_url = reverse_lazy('login')
 
     def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+    
+
+    # def form_valid(self, form):
+        response = super().form_valid(form)
         user = form.save()
         if user is not None:
+            print(user)
             login(self.request, user)
-        return super(CustomRegister, self).form_valid(form)
+        return response
 
-    def get(self, *args, **kwargs):
+    # def get(self, *args, **kwargs):
+        print(self.request.user.is_authenticated)
         if self.request.user.is_authenticated:
-            return redirect('detail')
+            return redirect('dashboard')
         return super(CustomRegister, self).get(*args, **kwargs)
 
 
 def main(request):
-    template = loader.get_template('home.html')
-    return HttpResponse(template.render())
+    
+    return render(request, 'home.html')
 
-
+@login_required
 def unit_page(request):
 
     form = UnitForm()

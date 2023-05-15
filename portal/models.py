@@ -1,4 +1,13 @@
 from django.db import models
+from django.contrib.auth.models import User
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    # Add additional fields for the user's profile
+
+    def __str__(self):
+        return self.user.username
+    
 
 class Staff(models.Model):
     first_name = models.CharField(max_length=255)

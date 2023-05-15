@@ -81,7 +81,6 @@ body:after {
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
-    z-index: 5;
 }
 .site-navbar .right-cta-menu {
     position: absolute;
