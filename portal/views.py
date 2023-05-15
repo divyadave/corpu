@@ -19,6 +19,10 @@ def dashboard(request):
     
     return render(request, 'dashboard.html')
 
+def sessionalapplicant(request):
+    
+    return render(request, 'sessionalapplicant.html')
+
 
 def sessionalProfile(request):
     
