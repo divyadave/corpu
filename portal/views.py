@@ -16,13 +16,14 @@ from .forms import UnitForm, RegistrationForm
 
 @login_required
 def dashboard(request):
-    
+
     return render(request, 'dashboard.html')
 
 
 def sessionalProfile(request):
-    
+
     return render(request, 'sessionalprofile.html')
+
 
 class CustomLogin(LoginView):
     template_name = 'login.html'
@@ -42,7 +43,6 @@ class CustomRegister(FormView):
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
-    
 
     # def form_valid(self, form):
         response = super().form_valid(form)
@@ -60,8 +60,9 @@ class CustomRegister(FormView):
 
 
 def main(request):
-    
+
     return render(request, 'home.html')
+
 
 @login_required
 def unit_page(request):
@@ -78,4 +79,4 @@ def apply_view(request):
             return render(request, 'success.html')
     else:
         form = UnitForm()
-    return render(request, 'apply.html', {'form': form})
+    return render(request, 'sessionalprofile.html', {'form': form})
