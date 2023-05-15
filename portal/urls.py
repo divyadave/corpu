@@ -10,5 +10,5 @@ urlpatterns = [
     path('register/', CustomRegister.as_view(), name='register'),
     path('unit/', unit_page, name='unit_page'),
     path('apply/', apply_view, name='apply'),
-     path('profile/', sessionalProfile , name='profile')
+    path('profile/', sessionalProfile , name='profile'),
 ]
