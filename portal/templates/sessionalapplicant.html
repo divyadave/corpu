@@ -5,21 +5,30 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Corpu</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Units</a></li>
-      <li><a href="#">Staff</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Login</a></li>
-      <li><a href="#">Register</a></li>
+<header class="site-navbar mt-3">
+    <div class="container-fluid">
+    <div class="row align-items-center">
+    <div class="site-logo col-6"><a href="{% url 'home' %}">Corpu</a></div>
+    <nav class="mx-auto site-navigation">
+    <ul class="site-menu js-clone-nav ml-0 pl-0">
+    <li><a href="{% url 'home' %}" class="nav-link active">Home</a></li>
+    <li><a href="{% url 'unit_page' %}">Units</a></li>
+    <li><a href="#">Staff</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact Us</a></li>
+    <li class="d-lg-none"><a href="#">Contact Us</a></li>
     </ul>
-  </div>
-</nav>
+    </nav>
+    <div class="right-cta-menu text-right d-flex aligin-items-center col-md-6">
+    <div class="ml-auto">
+    <a href="{% url 'register' %}" style="cursor: pointer;" class="btn btn-primary border-width-2"><span class="mr-2 icon-paper-plane"></span>Register</a>
+    <a href="{% url 'login' %}"  style="cursor: pointer;"  class="btn btn-primary border-width-2"><span class="mr-2 icon-paper-plane"></span>Login</a>
+    </div>
+    <a href="#" class="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"><span class="icon-menu h3 m-0 p-0 mt-2"></span></a>
+    </div>
+    </div>
+    </div>
+    </header>
 <div class="container">
   <h2>Application Lists</h2>
                                                    
