@@ -79,3 +79,16 @@ def apply_view(request):
     else:
         form = UnitForm()
     return render(request, 'apply.html', {'form': form})
+
+def user_form(request):
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('success')
+    else:
+        form = UserForm()
+    return render(request, 'portal/user_form.html', {'form': form})
+
+def success(request):
+    return render(request, 'portal/success.html')
