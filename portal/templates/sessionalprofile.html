@@ -1,6 +1,31 @@
 {% extends 'main.html' %}
 {% block content %}
-<h4 class="text-center" style="font-style: italic; color: blue;">Sessional Staff Profile Page</h4>
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light header">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}">Corpu</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'unit_page' %}">Units</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'unit_page' %}">Staffs</a>
+          </li>
+        
+          
+        </ul>
+        
+      </div>
+    </div>
+  </nav>
+  </header>
+<div class="card unit-card profile-card">
+  <h4 class="mt-4 ml-4" style="font-weight: 700; color: black;">Sessional Staff Profile Page</h4>
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
         <div class="col-md-12">
@@ -232,6 +257,7 @@
     <div class="d-grid gap-2 d-md-flex justify-content-md-center">
         <button class="btn btn-primary me-md-2" type="button">Submit</button>
         <button class="btn btn-primary" type="button">Edit</button>
-      </div>s
+      </div>
+</div>
 </div>
 {% endblock content %}

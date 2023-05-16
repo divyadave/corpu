@@ -144,3 +144,18 @@ body:after {
     padding-left: 0;
     padding-right: 0;
 }
+.card.unit-card {
+   
+        padding: 30px 40px;
+        margin-top: 60px;
+        margin-bottom: 60px;
+        border: none !important;
+        box-shadow: 0 6px 12px 0 rgba(0,0,0,0.2);
+        color: black;
+        font-weight: 600;
+    
+}
+.profile-card {
+    margin-left: 40px;
+    margin-right: 40px;
+}
