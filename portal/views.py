@@ -16,17 +16,15 @@ from .forms import UnitForm, RegistrationForm
 
 @login_required
 def dashboard(request):
-    
     return render(request, 'dashboard.html')
-
-def sessionalapplicant(request):
-    
-    return render(request, 'sessionalapplicant.html')
 
 
 def sessionalProfile(request):
-    
     return render(request, 'sessionalprofile.html')
+
+def sessionalApplicant(request):
+    return render(request, 'sessionalapplicant.html')
+
 
 class CustomLogin(LoginView):
     template_name = 'login.html'
@@ -64,12 +62,10 @@ class CustomRegister(FormView):
 
 
 def main(request):
-    
     return render(request, 'home.html')
 
 @login_required
 def unit_page(request):
-
     form = UnitForm()
     return render(request, 'unit_page.html', {'form': form})
 
