@@ -27,6 +27,22 @@ class PermanentStaff(Staff):
 class SessionalStaff(Staff):
     units = models.ManyToManyField('Unit', related_name='sessional_staff')
 
+class SessionalStaffUser(models.Model):
+    email = models.EmailField()
+    password = models.CharField(max_length=255)
+    phoneno = models.CharField(max_length=10)
+    dob = models.DateField()
+    gender = models.CharField(max_length=10)
+    education = models.CharField(max_length=255)
+    certification = models.CharField(max_length=255)
+    work_experience = models.TextField()
+    week_availability = models.CharField(max_length=255)
+    days_of_week = models.CharField(max_length=255)
+    timing = models.TimeField()
+    preferred_unit = models.CharField(max_length=255)
+    preferred_location = models.CharField(max_length=255)
+    preferred_teaching_styles = models.CharField(max_length=255)
+
 
 class Unit(models.Model):
     name = models.CharField(max_length=255)

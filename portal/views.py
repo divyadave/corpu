@@ -20,9 +20,25 @@ def dashboard(request):
     return render(request, 'dashboard.html')
 
 
+def joblisting(request):
+    return render(request, 'joblisting.html')
+
+
 def sessionalProfile(request):
 
     return render(request, 'sessionalprofile.html')
+
+
+def sessionalapplicant(request):
+    return render(request, 'sessionalapplicant.html')
+
+
+def viewapplication(request):
+    return render(request, 'viewapplication.html')
+
+
+def createjob(request):
+    return render(request, 'createjob.html')
 
 
 class CustomLogin(LoginView):
@@ -56,7 +72,7 @@ class CustomRegister(FormView):
         print(self.request.user.is_authenticated)
         if self.request.user.is_authenticated:
             return redirect('dashboard')
-        return super(CustomRegister, self).get(*args, **kwargs)
+        return super(CustomRegister, self).manageget(*args, **kwargs)
 
 
 def main(request):
@@ -66,7 +82,6 @@ def main(request):
 
 @login_required
 def unit_page(request):
-
     form = UnitForm()
     return render(request, 'unit_page.html', {'form': form})
 
@@ -76,7 +91,22 @@ def apply_view(request):
         form = UnitForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, 'success.html')
+            return render(request, 'sessionalprofile.html')
     else:
         form = UnitForm()
-    return render(request, 'sessionalprofile.html', {'form': form})
+    return render(request, 'apply.html', {'form': form})
+
+
+def user_form(request):
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('success')
+    else:
+        form = UserForm()
+    return render(request, 'portal/user_form.html', {'form': form})
+
+
+def success(request):
+    return render(request, 'portal/success.html')

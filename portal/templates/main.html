@@ -10,19 +10,20 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&family=Nunito:wght@200&family=Roboto+Slab:wght@200&display=swap" rel="stylesheet">
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
         {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'profile.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'unit.css' %}">
         
-        {% bootstrap_css %}
-        {% bootstrap_javascript %}
         <style>
             body {
-                background-color: #f1efeff2;
+                background-color: #dee9ff;
                 font-family: 'Nunito', sans-serif;
                 font-family: 'Nunito Sans', sans-serif;
                 font-family: 'Roboto Slab', serif;
+                overflow: scroll;
                 
 
             }
@@ -39,7 +40,7 @@
         </style>
     </head>
     <body>
-        <div class="container-fluid">
+        <div class="container-fluid padding-change">
 
             {% block content %}
             {% endblock content %}
