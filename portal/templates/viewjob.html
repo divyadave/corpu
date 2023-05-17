@@ -1,0 +1,50 @@
+
+{% extends 'main.html' %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<div style="margin-top: 70px; ">
+<h3 class="text-center">Post a Job</h3>
+  <div class="container mt-5">
+    <form id="unitForm" method="POST" action="{% url 'apply' %}">
+      <div class="form-group">
+        <label for="unitName">Unit Name:</label>
+       <p id="unitName"> </p>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="courseDescription">Course Description:</label>
+        <p id="courseDescription"> </p>
+      </div>
+      <div class="form-group">
+        <label for="requiredQualification">Required Qualification:</label>
+        <p id="requiredQualification"> </p>
+      </div>
+      <div class="form-group">
+        <label for="teachingMaterials">Teaching Materials:</label>
+        <p id="teachingMaterials"> </p>
+      </div>
+      <div class="form-group">
+        <label for="SessionTimes">Session Times:</label>
+        <p id="sessiontimes"> </p>
+      </div>
+      <div class="form-group">
+        <label for="Responsibilities">Responsibilities:</label>
+        <p id="Responsibilities"> </p>
+      </div>
+      <div class="form-group">
+        <label for="benefits">Benefits:</label>
+        <p id="benefits"> </p>
+      </div>
+      <button type="submit" class="btn btn-primary">Post</button>
+    </form>
+  </div>
+</div>
+
+
+{% endblock content %}
+
