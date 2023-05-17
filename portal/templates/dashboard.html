@@ -1,14 +1,40 @@
 {% extends 'main.html' %}
 {% block content %}
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light header">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}">Corpu</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'unit_page' %}">Units</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'unit_page' %}">Staffs</a>
+            </li>
+          
+            
+          </ul>
+          <div class="ml-auto">
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'logout' %}"  style="cursor: pointer;"  class="btn btn-primary border-width-2"><span class="mr-2 icon-paper-plane"></span>Logout</a>
+            {% else %}
+            <a href="{% url 'login' %}"  style="cursor: pointer;"  class="btn btn-primary border-width-2"><span class="mr-2 icon-paper-plane"></span>Login</a>
+            {% endif %}
+            </div>
+          
+        </div>
+      </div>
+    </nav>
+    </header>
 <div class="header-bar">
     <div>
         <h1>Hello, {{ request.user | title }}</h1>
         
     </div> 
-    {% if request.user.is_authenticated %}
-<a href="/logout">Logout</a>
-{% else %}
-<a href="{% url 'login' %}">Login</a>
-{% endif %}
 </div>
 {% endblock content %}
