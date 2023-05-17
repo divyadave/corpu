@@ -21,6 +21,9 @@ def dashboard(request):
 def joblisting(request):
     return render(request, 'joblisting.html')
 
+def viewjob(request):
+    return render(request, 'viewjob.html')
+
 def listofapplications(request):
     return render(request, 'listofapplications.html')
 
