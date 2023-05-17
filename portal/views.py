@@ -18,12 +18,21 @@ from .forms import UnitForm, RegistrationForm
 def dashboard(request):
     return render(request, 'dashboard.html')
 
+def joblisting(request):
+    return render(request, 'joblisting.html')
+
 
 def sessionalProfile(request):
     return render(request, 'sessionalprofile.html')
 
-def sessionalApplicant(request):
+def sessionalapplicant(request):
     return render(request, 'sessionalapplicant.html')
+
+def viewapplication(request):
+    return render(request, 'viewapplication.html')
+
+def createjob(request):
+    return render(request, 'createjob.html')
 
 
 class CustomLogin(LoginView):
