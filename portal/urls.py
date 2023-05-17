@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth.views import LogoutView
-from .views import CustomLogin, CustomRegister, main, sessionalProfile, unit_page, apply_view, dashboard, sessionalapplicant,viewapplication,createjob,joblisting,viewapplication
+from .views import CustomLogin, CustomRegister, main, sessionalProfile, unit_page, apply_view, dashboard, sessionalapplicant,viewapplication,createjob,joblisting,viewapplication,listofapplications
 
 urlpatterns = [
     path('', main, name="home"),
@@ -15,4 +15,5 @@ urlpatterns = [
     path('createjob/', createjob, name='createjob' ),
      path('sessionalapplicant/', sessionalapplicant, name='sessionalapplicant' ),
       path('joblisting/', joblisting, name='joblisting' ),
+      path('listofapplications/', listofapplications, name='listofapplications' ),
 ]

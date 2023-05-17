@@ -23,6 +23,8 @@ def dashboard(request):
 def joblisting(request):
     return render(request, 'joblisting.html')
 
+def listofapplications(request):
+    return render(request, 'listofapplications.html')
 
 def sessionalProfile(request):
 
