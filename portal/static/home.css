@@ -159,3 +159,58 @@ body:after {
     margin-left: 40px;
     margin-right: 40px;
 }
+.dark-mode {
+    background-color: black;
+    color: white;
+  }
+  .toggle {
+    cursor: pointer;
+    display: inline-block;
+  }
+  
+  .toggle-switch {
+    display: inline-block;
+    background: #80808094;
+    border-radius: 16px;
+    width: 58px;
+    height: 25px;
+    position: relative;
+    vertical-align: middle;
+    transition: background 0.25s;
+  }
+  .toggle-switch:before, .toggle-switch:after {
+    content: "";
+  }
+  .toggle-switch:before {
+    display: block;
+    background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 5px;
+    left: 4px;
+    transition: left 0.25s;
+  }
+  .toggle:hover .toggle-switch:before {
+    background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+  }
+  #theme-toggle:checked + .toggle-switch {
+    background: #0d6efd;
+  }
+  #theme-toggle:checked + .toggle-switch:before {
+    left: 38px;
+  }
+  
+  #theme-toggle {
+    position: absolute;
+    visibility: hidden;
+  }
+  
+  .toggle-label {
+    margin-left: 5px;
+    position: relative;
+    top: 2px;
+  }
