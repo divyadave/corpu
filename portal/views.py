@@ -112,3 +112,5 @@ def user_form(request):
 
 def success(request):
     return render(request, 'portal/success.html')
+
+
