@@ -13,10 +13,19 @@ urlpatterns = [
     path('profile/', sessionalProfile , name='profile'),
     path('viewapplication/', viewapplication, name='viewapplication' ),
     path('createjob/', createjob, name='createjob' ),
+<<<<<<< Updated upstream
     path('sessionalapplicant/', sessionalapplicant, name='sessionalapplicant' ),
     path('joblisting/', joblisting, name='joblisting' ),
     path('listofapplications/', listofapplications, name='listofapplications' ),
     path('viewjob/', viewjob, name='viewjob' ),
     path('listofjobs/', listofjobs, name='listofjobs' ),
          path('view/', applicantjobdetail, name='applicantjob' ),
+=======
+     path('sessionalapplicant/', sessionalapplicant, name='sessionalapplicant' ),
+      path('joblisting/', joblisting, name='joblisting' ),
+      path('listofapplications/', listofapplications, name='listofapplications' ),
+      path('viewjob/', viewjob, name='viewjob' ),
+      path('listofjobs/', listofjobs, name='listofjobs' ),
+    path('view/', applicantjobdetail, name='applicantjob' ),
+>>>>>>> Stashed changes
 ]

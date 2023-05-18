@@ -103,6 +103,9 @@ body:after {
     display: inline-block;
     text-decoration: none !important;
 }
+.navbar-light .navbar-brand {
+    color: white !important;
+}
 .card {
     border: 2px solid rgb(0 0 0 / 0%);
 }
@@ -141,8 +144,8 @@ body:after {
     font-weight: 600;
 }
 .padding-change {
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 .card.unit-card {
    
