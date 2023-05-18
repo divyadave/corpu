@@ -43,6 +43,9 @@ def createjob(request):
     return render(request, 'createjob.html')
 
 
+def applicantjobdetail(request):
+    return render(request, 'applicantjobdetail.html')
+
 class CustomLogin(LoginView):
     template_name = 'login.html'
     fields = '__all__'
