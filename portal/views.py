@@ -23,6 +23,12 @@ def dashboard(request):
 def joblisting(request):
     return render(request, 'joblisting.html')
 
+def listofjobs(request):
+    return render(request, 'listofjobs.html')
+
+def viewjob(request):
+    return render(request, 'viewjob.html')
+
 def listofapplications(request):
     return render(request, 'listofapplications.html')
 
@@ -42,6 +48,9 @@ def viewapplication(request):
 def createjob(request):
     return render(request, 'createjob.html')
 
+
+def applicantjobdetail(request):
+    return render(request, 'applicantjobdetail.html')
 
 class CustomLogin(LoginView):
     template_name = 'login.html'
