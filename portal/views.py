@@ -12,6 +12,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.template import loader
 from .forms import UnitForm, RegistrationForm
+from django.shortcuts import render, redirect 
+from .forms import LoginForm 
 
 
 @login_required
@@ -114,3 +116,14 @@ def success(request):
     return render(request, 'portal/success.html')
 
 
+
+def login(request): 
+    if request.method == 'POST': 
+        form = LoginForm(request.POST) 
+        if form.is_valid(): 
+            # Perform login logic 
+            return redirect('home') # Replace 'home' with your desired URL 
+        else: 
+            form = LoginForm() 
+
+        return render(request, 'login.html', {'form': form})

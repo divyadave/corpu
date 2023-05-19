@@ -217,3 +217,17 @@ body:after {
     position: relative;
     top: 2px;
   }
+
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color:#2B2D42;
+    color: white;
+    text-align: center;
+ }
+
+ .login-container{
+    margin-top:10%;
+ }
