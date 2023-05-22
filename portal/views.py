@@ -88,7 +88,13 @@ def main(request):
 
 @login_required
 def unit_page(request):
-    form = UnitForm()
+     if request.method == 'POST':
+        form = UnitForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'success.html')
+        else:
+            form = UnitForm()
     return render(request, 'unit_page.html', {'form': form})
 
 
