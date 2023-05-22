@@ -100,7 +100,7 @@ def apply_view(request):
             return render(request, 'success.html')
     else:
         form = UnitForm()
-    return render(request, 'apply.html', {'form': form})
+    return render(request, 'success.html', {'form': form})
 
 def user_form(request):
     if request.method == 'POST':
