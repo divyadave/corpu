@@ -6,12 +6,12 @@ from django.contrib.auth.models import User
 from crispy_forms.helper import FormHelper 
 from crispy_forms.layout import Submit 
 
-class UnitForm(forms.ModelForm):
+class UnitForm(forms.Form):
     class Meta:
         model = Unit
         # fields = ['unitName', 'courseDescription', 'requiredQualification', 'teachingMaterials',
         #          'sessionTimes', 'lecturer', 'lecturerEmail']
-        fields  = ['name']
+        fields  = ['UnitName','CourseDescription','RequiredQualification']
 
 class RegistrationForm(UserCreationForm):
   

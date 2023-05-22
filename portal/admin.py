@@ -12,7 +12,7 @@ class SessionalStaffAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'last_name', 'email', 'qualifications', 'availability')
 
 class UnitAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+    list_display = ('UnitName')
 
 class SessionalApplicationAdmin(admin.ModelAdmin):
     list_display = ('sessional_staff', 'unit', 'preferences')

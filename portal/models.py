@@ -48,6 +48,10 @@ class Unit(models.Model):
     UnitName = models.CharField(max_length=255)
     CourseDescription = models.TextField(max_length=255)
     RequiredQualification = models.CharField(max_length=255)
+    teachingMaterials = models.CharField(max_length=255)
+    sessionTimes = models.CharField(max_length=255)
+    lecturer = models.CharField(max_length=255)
+    lecturerEmail = models.CharField(max_length=255)
     
 
     def __str__(self):
