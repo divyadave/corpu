@@ -45,10 +45,13 @@ class SessionalStaffUser(models.Model):
 
 
 class Unit(models.Model):
-    name = models.CharField(max_length=255)
+    UnitName = models.CharField(max_length=255)
+    CourseDescription = models.TextField(max_length=255)
+    RequiredQualification = models.CharField(max_length=255)
+    
 
     def __str__(self):
-        return self.name
+        return self.Unitname
 
 
 class SessionalApplication(models.Model):
