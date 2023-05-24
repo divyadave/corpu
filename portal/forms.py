@@ -14,11 +14,6 @@ class CreateJobForm(forms.ModelForm):
         model = CreateJob
         fields = ['unit', 'course_description', 'required_qualification', 'teaching_materials', 'session_times', 'responsibilities', 'benefits']
 
-class JobListingForm(forms.ModelForm):
-    class Meta:
-        model = JobListing
-        fields = ['sessional_staff', 'first_name', 'unit' ,'num_applications', 'roles']
-
 class UnitForm(forms.Form):
     class Meta:
         model = Unit

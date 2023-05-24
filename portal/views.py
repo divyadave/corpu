@@ -15,7 +15,6 @@ from .forms import UnitForm, RegistrationForm
 from django.shortcuts import render, redirect 
 from .forms import LoginForm
 from .models import JobListing
-from .forms import JobListingForm
 from django.views import View 
 from .models import CreateJob
 from .forms import CreateJobForm
@@ -139,22 +138,9 @@ def login(request):
 
         return render(request, 'login.html', {'form': form})
 
-class JobListingCreateView(View):
-    def get(self, request):
-        form = JobListingForm()
-        return render(request, 'joblisting_create.html', {'form': form})
-
-    def post(self, request):
-        form = JobListingForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('joblisting_list')
-        return render(request, 'joblisting_create.html', {'form': form})
-
-class JobListingListView(View):
-    def get(self, request):
-        joblistings = JobListing.objects.all()
-        return render(request, 'joblisting_list.html', {'joblistings': joblistings})
+def job_listing(request):
+    joblistings = JobListing.objects.all()
+    return render(request, 'job_listing.html', {'joblistings': joblistings})
 
 class CreateJobView(View):
     def get(self, request):
