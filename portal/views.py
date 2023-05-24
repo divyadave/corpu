@@ -95,7 +95,7 @@ def unit_page(request):
             return render(request, 'success.html')
         else:
             form = UnitForm()
-    return render(request, 'unit_page.html', {'form': form})
+        return render(request, 'unit_page.html', {'form': form})
 
 
 def apply_view(request):

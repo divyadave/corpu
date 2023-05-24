@@ -28,6 +28,7 @@ class SessionalStaff(Staff):
     units = models.ManyToManyField('Unit', related_name='sessional_staff')
 
 class SessionalStaffUser(models.Model):
+    sessional_staffID = models.PrimaryKey(max_length=10)
     email = models.EmailField()
     password = models.CharField(max_length=255)
     phoneno = models.CharField(max_length=10)
@@ -72,3 +73,7 @@ class Availibility(models.Model):
 
     def __str__(self) -> str:
         return f"{self.casual_id}"
+
+class joblisting(models.Model):
+    jobID = models.PrimaryKey(SessionalStaff,on_delete=models.CASCADE)
+    tutor
