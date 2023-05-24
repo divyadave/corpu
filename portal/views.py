@@ -17,6 +17,8 @@ from .forms import LoginForm
 from .models import JobListing
 from .forms import JobListingForm
 from django.views import View 
+from .models import CreateJob
+from .forms import CreateJobForm
 
 
 @login_required
@@ -153,3 +155,15 @@ class JobListingListView(View):
     def get(self, request):
         joblistings = JobListing.objects.all()
         return render(request, 'joblisting_list.html', {'joblistings': joblistings})
+
+class CreateJobView(View):
+    def get(self, request):
+        form = CreateJobForm()
+        return render(request, 'create_job.html', {'form': form})
+
+    def post(self, request):
+        form = CreateJobForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('job_listing')  # Redirect to the job listing page
+        return render(request, 'create_job.html', {'form': form})
