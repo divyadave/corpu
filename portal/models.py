@@ -28,7 +28,6 @@ class SessionalStaff(Staff):
     units = models.ManyToManyField('Unit', related_name='sessional_staff')
 
 class SessionalStaffUser(models.Model):
-    sessional_staffID = models.PrimaryKey(max_length=10)
     email = models.EmailField()
     password = models.CharField(max_length=255)
     phoneno = models.CharField(max_length=10)
@@ -74,6 +73,15 @@ class Availibility(models.Model):
     def __str__(self) -> str:
         return f"{self.casual_id}"
 
-class joblisting(models.Model):
-    jobID = models.PrimaryKey(SessionalStaff,on_delete=models.CASCADE)
-    tutor
+class JobListing(models.Model):
+    sessional_staff = models.ForeignKey(SessionalStaff, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=255, null=True, blank=True)
+    unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
+    num_applications = models.CharField(max_length=255)
+    roles = models.CharField(max_length=255)
+
+    def save(self, *args, **kwargs):
+        self.first_name = self.sessional_staff.first_name
+        super().save(*args, **kwargs)
+
+    

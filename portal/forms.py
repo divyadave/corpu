@@ -6,6 +6,13 @@ from django.contrib.auth.models import User
 from crispy_forms.helper import FormHelper 
 from crispy_forms.layout import Submit 
 
+from .models import JobListing
+
+class JobListingForm(forms.ModelForm):
+    class Meta:
+        model = JobListing
+        fields = ['sessional_staff', 'first_name', 'unit' ,'num_applications', 'roles']
+
 class UnitForm(forms.Form):
     class Meta:
         model = Unit
