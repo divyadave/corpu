@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import UserProfile, PermanentStaff, SessionalStaff, Unit, SessionalApplication, Availibility, SessionalStaffUser
+from .models import UserProfile, PermanentStaff, SessionalStaff, Unit, SessionalApplication, Availibility, SessionalStaffUser , JobListing
 
 # Define admin view for models
 class UserProfileAdmin(admin.ModelAdmin):

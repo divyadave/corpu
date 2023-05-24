@@ -86,7 +86,7 @@ class JobListing(models.Model):
 
 class CreateJob(models.Model):
     unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
-    course_description = models.TextField()
+    course_description = models.TextField(max_length=255 , null=True)
     required_qualification = models.CharField(max_length=255)
     teaching_materials = models.CharField(max_length=255)
     session_times = models.CharField(max_length=255)
