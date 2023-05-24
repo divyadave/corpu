@@ -84,4 +84,15 @@ class JobListing(models.Model):
         self.first_name = self.sessional_staff.first_name
         super().save(*args, **kwargs)
 
+class CreateJob(models.Model):
+    unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
+    course_description = models.TextField()
+    required_qualification = models.CharField(max_length=255)
+    teaching_materials = models.CharField(max_length=255)
+    session_times = models.CharField(max_length=255)
+    responsibilities = models.TextField()
+    benefits = models.TextField()
+
+    def __str__(self):
+        return self.unit.UnitName
     

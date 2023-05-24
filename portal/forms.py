@@ -7,6 +7,12 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit 
 
 from .models import JobListing
+from .models import CreateJob
+
+class CreateJobForm(forms.ModelForm):
+    class Meta:
+        model = CreateJob
+        fields = ['unit', 'course_description', 'required_qualification', 'teaching_materials', 'session_times', 'responsibilities', 'benefits']
 
 class JobListingForm(forms.ModelForm):
     class Meta:
