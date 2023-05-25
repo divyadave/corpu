@@ -12,6 +12,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.template import loader
 from .forms import UnitForm, RegistrationForm
+from django.shortcuts import render, redirect
+from .forms import LoginForm
 
 
 @login_required
