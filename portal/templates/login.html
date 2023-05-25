@@ -1,15 +1,48 @@
 {% extends 'main.html' %}
-{% block content %}
-<div class="row">
-    <div class="col-md-6 mx-auto">
-        <h1>Login Form</h1> 
-<form method="POST" action="">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Login">
-</form>
-<p>Don't have an account? <a href="/register">Register</a></p>
 
+{% load static %}
+
+{% block content %}
+
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-4 col-lg-6 col-xl-5">
+        <img src="{% static 'images/login-img.jpeg' %}" class="img-fluid" alt="Sample image">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        {% if request.session.success %}
+          <p class="alert alert-success">{{ request.session.success }}</p>
+        {% endif %}
+        {% if request.errors %}
+          {% for err in request.errors %}
+            <p class="alert alert-danger">{{ err }}</p>
+          {% endfor %}
+        {% endif %}
+        <form style="border: 1px solid #9e9e9e8d; border-radius: 12px; padding: 40px 40px; box-shadow: 5px 5px 5px 5px #9e9e9e8d;" action="{% url 'login' %}" method="POST">
+          {% csrf_token %}
+          <div class="mb-4">
+            <h4>Login</h4>
+          </div>
+          <div class="form-outline mb-4">
+            <label class="form-label">Username<span class="text-danger">*</span></label>
+            <input type="text" class="form-control form-control-lg" name="username" value="{{ request.POST.username }}" placeholder="Enter your email address" />
+          </div>
+          <div class="form-outline mb-3">
+            <label class="form-label">Password<span class="text-danger">*</span></label>
+            <input type="password" class="form-control form-control-lg" name="password" placeholder="Enter password" />
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <a href="#!" class="text-body">Forgot password?</a>
+          </div>
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button type="submit" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="/register" class="link-danger">Register</a></p>
+          </div>
+        </form>
+      </div>
     </div>
-</div>
-{% endblock content %}
+  </div>
+</section>
+
+{% endblock %}

@@ -1,53 +1,95 @@
 {% extends 'main.html' %}
+
 {% block content %}
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light header">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'home' %}">Corpu</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'unit_page' %}">Units</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'unit_page' %}">Staffs</a>
-            </li>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light header">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}">Corpu</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           
-            
-          </ul>
-          <div class="ml-auto">
-            {% if request.user.is_authenticated %}
-            <a href="{% url 'logout' %}"  style="cursor: pointer;"  class="btn btn-primary border-width-2"><span class="mr-2 icon-paper-plane"></span>Logout</a>
-            {% else %}
-            <a href="{% url 'login' %}"  style="cursor: pointer;"  class="btn btn-primary border-width-2"><span class="mr-2 icon-paper-plane"></span>Login</a>
-            {% endif %}
-            <label class="toggle">
-              <input type="checkbox" id="theme-toggle">
-              <div class="toggle-switch"></div>
-             
-            </label>
-           
-            
-            </div>
-          
-        </div>
-      </div>
-    </nav>
-    </header>
-<div class="header-bar">
-    <div>
-        <h1>Hello, {{ request.user | title }}</h1>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'unit_page' %}">Units</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'unit_page' %}">Staffs</a>
+          </li>
         
-    </div> 
+          
+        </ul>
+        <div class="ml-auto">
+          {% if request.user.is_authenticated %}
+          <a href="{% url 'logout' %}"  style="cursor: pointer;"  class="btn btn-primary border-width-2"><span class="mr-2 icon-paper-plane"></span>Logout</a>
+          {% else %}
+          <a href="{% url 'login' %}"  style="cursor: pointer;"  class="btn btn-primary border-width-2"><span class="mr-2 icon-paper-plane"></span>Login</a>
+          {% endif %}
+          <label class="toggle">
+            <input type="checkbox" id="theme-toggle">
+            <div class="toggle-switch"></div>
+           
+          </label>
+         
+          
+          </div>
+        
+      </div>
+    </div>
+  </nav>
+  </header>
+<div class="header-bar">
+  <div>
+      <h1>Hello, {{ request.user | title }}</h1>
+      
+  </div> 
 </div>
 <script>
-  document.getElementById('theme-toggle').addEventListener('change', function() {
-    var element = document.body;
-  element.classList.toggle("dark-mode");
-  });
+document.getElementById('theme-toggle').addEventListener('change', function() {
+  var element = document.body;
+element.classList.toggle("dark-mode");
+});
 </script>
-{% endblock content %}
+
+<main role="main" class="col-10 col-lg-9 col-xl-10 py-4 px-4">
+  <h2 class="page-title pb-3 mb-3">Dashboard</h2>
+  <div aria-label="breadcrumb">
+    <ol class="breadcrumb p-0">
+      <li class="breadcrumb-item">
+        <a href="{% url 'home' %}">Home</a>
+      </li>
+    </ol>
+  </div>
+  <div class="page-content mt-4">
+    <div class="content-header row m-0 py-3">
+      <div class="col-12 col-sm-6">
+        <h5 class="page-subtitle m-0 font-weight-bold">Homepage</h5>
+      </div>
+    </div>
+    <div class="content-wrapper table-responsive-sm">
+        <div class="card bg-light mb-3" style="">
+          <div class="card-header">Create Job</div>
+          <div class="card-body">
+            <p class="card-text"><a href="{% url 'unit_page' %}">Add unit</a></p>
+          </div>
+        </div>
+        <div class="card bg-light mb-3" style="">
+          <div class="card-header">Job Listings</div>
+          <div class="card-body">
+            <p class="card-text"><a href="{% url 'listofjobs' %}">List of jobs</a></p>
+          </div>
+        </div>
+        <div class="card bg-light mb-3" style="">
+          <div class="card-header">Profile</div>
+          <div class="card-body">
+            <p class="card-text"><a href="{% url 'profile' %}">Apply for job</a></p>
+          </div>
+        </div>
+    </div>
+  </main>
+ 
+
+
+
+{% endblock %}

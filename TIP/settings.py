@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'portal',
-    'bootstrap5'
+    'bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -50,7 +50,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 
 ]
 
@@ -120,7 +119,7 @@ LOGIN_URL = 'login'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-STATIC_URL = 'portal/static/'
+STATIC_URL = 'portal/static/images/'
 STATICFILES_DIRS = [BASE_DIR / "portal/static"]
 
 # Default primary key field type

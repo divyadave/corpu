@@ -23,14 +23,18 @@ def dashboard(request):
 def joblisting(request):
     return render(request, 'joblisting.html')
 
+
 def listofjobs(request):
     return render(request, 'listofjobs.html')
+
 
 def viewjob(request):
     return render(request, 'viewjob.html')
 
+
 def listofapplications(request):
     return render(request, 'listofapplications.html')
+
 
 def sessionalProfile(request):
 
@@ -51,6 +55,7 @@ def createjob(request):
 
 def applicantjobdetail(request):
     return render(request, 'applicantjobdetail.html')
+
 
 class CustomLogin(LoginView):
     template_name = 'login.html'
@@ -105,7 +110,7 @@ def apply_view(request):
             return render(request, 'sessionalprofile.html')
     else:
         form = UnitForm()
-    return render(request, 'apply.html', {'form': form})
+    return render(request, 'success.html', {'form': form})
 
 
 def user_form(request):
@@ -121,3 +126,11 @@ def user_form(request):
 
 def success(request):
     return render(request, 'portal/success.html')
+
+
+def about(request):
+    return render(request, 'about.html')
+
+
+def contact(request):
+    return render(request, 'contact.html')
