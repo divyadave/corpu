@@ -11,7 +11,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.template import loader
-from .forms import UnitForm, RegistrationForm
+from .forms import UnitForm, RegistrationForm, CreateJobForm
 from django.shortcuts import render, redirect
 from .forms import LoginForm
 
