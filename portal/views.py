@@ -24,6 +24,9 @@ from .forms import CreateJobForm
 def dashboard(request):
     return render(request, 'dashboard.html')
 
+def success(request):
+    return render(request, 'success.html')
+
 # def joblisting(request):
 #     return render(request, 'joblisting.html')
 
@@ -143,5 +146,18 @@ class CreateJobView(FormView):
         form = CreateJobForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('job_listing')  # Redirect to the job listing page
+            return redirect('jobListing')  # Redirect to the job listing page
         return render(request, 'createjob.html', {'form': form})
+
+class CreateProfile(FormView):
+    def get(self, request):
+        form = CreateProfile()
+        return render(request, 'profile.html', {'form': form})
+
+    def post(self, request):
+        form = CreateProfile(request.POST)
+        print('form', form)
+        if form.is_valid():
+            form.save()
+            return redirect('success')  # Redirect to the job listing page
+        return render(request, 'profile.html', {'form': form})

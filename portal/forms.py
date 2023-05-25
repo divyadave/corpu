@@ -8,14 +8,18 @@ from crispy_forms.layout import Submit
 
 from .models import JobListing
 from .models import CreateJob
+from .models import Staff
 
 class CreateJobForm(forms.ModelForm):
     class Meta:
         model = CreateJob
         fields = ['course_description', 'required_qualification', 'teaching_materials', 'session_times', 'responsibilities', 'benefits']
 
-
-
+class CreateProfile(forms.ModelForm):
+    class Meta:
+        model = Staff
+        fields = ['first_name', 'last_name', 'email', 'qualifications', 'availability', 'phoneno', 'dob', 'gender', 'certification', 'work_experience']
+    
 class RegistrationForm(UserCreationForm):
   
 
