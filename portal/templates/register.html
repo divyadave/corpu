@@ -1,14 +1,50 @@
+<!-- register.html -->
+
 {% extends 'main.html' %}
+
+{% load static %}
+
 {% block content %}
-<div class="row">
-    <div class="col-md-6 mx-auto">
-<h1>Register Form</h1> 
-<form method="POST" action="">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Register">
-</form>
-<p>Already have an account? <a href="/login">Login</a></p>
-</div>
-</div>
-{% endblock content %}
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="{% static 'images/register.jpeg' %}"  class="img-fluid" alt="Sample image">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        {% if form.errors %}
+          <div class="alert alert-danger">
+            {% for field in form %}
+              {% for error in field.errors %}
+                {{ error }}
+              {% endfor %}
+            {% endfor %}
+          </div>
+        {% endif %}
+        <form style="border: 1px solid #9e9e9e8d; border-radius: 12px; padding: 40px 20px; box-shadow: 5px 5px 5px 5px #9e9e9e8d;" method="post">
+          {% csrf_token %}
+          <div class="mb-4">
+            <h4>Registration Form</h4>
+          </div>
+          <div class="form-outline mb-4">
+            <label class="form-label">Name<span class="text-danger">*</span></label>
+            <input type="text" class="form-control form-control-lg" name="name" value="{{ form.name.value }}" placeholder="Enter a username" required>
+          </div>
+          <div class="form-outline mb-3">
+            <label class="form-label">Password<span class="text-danger">*</span></label>
+            <input type="password" class="form-control form-control-lg" name="password" placeholder="Enter your password" required>
+          </div>
+          <div class="form-outline mb-3">
+            <label class="form-label">Confirm Password<span class="text-danger">*</span></label>
+            <input type="password" class="form-control form-control-lg" name="password_confirm" placeholder="Retype your password" required>
+          </div>
+          <div class="text-center text-lg-start mt-4">
+            <button type="submit" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">Register</button>
+            <p class="small fw-bold mt-2 pt-1 mb-0">Already Registered? <a href="{% url 'login' %}" class="link-danger">Login</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
