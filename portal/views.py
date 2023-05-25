@@ -11,7 +11,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.template import loader
-from .forms import UnitForm, RegistrationForm
+from .forms import RegistrationForm
 from django.shortcuts import render, redirect 
 from .forms import LoginForm
 from .models import JobListing
@@ -91,16 +91,6 @@ def main(request):
     return render(request, 'home.html')
 
 @login_required
-def unit_page(request):
-     if request.method == 'POST':
-        form = UnitForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return render(request, 'success.html')
-        else:
-            form = UnitForm()
-        return render(request, 'unit_page.html', {'units': units})
-
 
 def apply_view(request):
     if request.method == 'POST':
