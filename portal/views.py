@@ -127,11 +127,14 @@ def login(request):
 
         return render(request, 'login.html', {'form': form})
 
-def jobListing(request):
-    joblistings = JobListing.objects.all()
-    return render(request, 'joblisting.html', {'joblistings': joblistings})
+@login_required
+def job_listing(request):
+     table_data = JobListing.objects.all()
+     context = {'table_data': table_data}
+     return render(request, 'joblisting.html', context)
 
-class CreateJobView(View):
+
+class CreateJobView(FormView):
     def get(self, request):
         form = CreateJobForm()
         return render(request, 'createjob.html', {'form': form})
