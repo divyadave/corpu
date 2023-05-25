@@ -46,19 +46,31 @@ class Availibility(models.Model):
     end_time = models.TimeField()
     id = models.AutoField(primary_key=True, default=999)
 
+# class JobListing(models.Model):
+#     sessional_staff = models.ForeignKey(SessionalStaffUser, on_delete=models.CASCADE)
+#     first_name = models.CharField(max_length=255, null=True, blank=True)
+#     UnitName = models.CharField(max_length=255)
+#     num_applications = models.CharField(max_length=255)
+#     roles = models.CharField(max_length=255)
+
+#     def __str__(self):
+#         return self.sessional_staff.first_name
+
+#     def save(self, *args, **kwargs):
+#         self.first_name = self.sessional_staff.first_name
+#         super().save(*args, **kwargs)
+
 class JobListing(models.Model):
-    sessional_staff = models.ForeignKey(SessionalStaffUser, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=255, null=True, blank=True)
-    UnitName = models.CharField(max_length=255)
-    num_applications = models.CharField(max_length=255)
-    roles = models.CharField(max_length=255)
+    unit_name = models.TextField()
+    course_description = models.TextField()
+    required_qualification = models.CharField(max_length=100)
+    teaching_materials = models.CharField(max_length=100)
+    session_times = models.CharField(max_length=100)
+    responsibilities = models.CharField(max_length=100)
+    benefits = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.sessional_staff.first_name
-
-    def save(self, *args, **kwargs):
-        self.first_name = self.sessional_staff.first_name
-        super().save(*args, **kwargs)
+        return self.unit_name
 
 class CreateJob(models.Model):
     UnitName = models.CharField(max_length=255)

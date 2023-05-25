@@ -31,7 +31,7 @@
 <div style="margin-top: 70px; ">
 <h3 class="text-center">Post a Job</h3>
   <div class="container mt-5">
-    <form id="unitForm" method="POST">
+    <form id="unitForm" method="POST" action="{% url 'createjob' %}">
       {% csrf_token %}
       <div class="form-group">
         <label for="unitName">Unit Name:</label>

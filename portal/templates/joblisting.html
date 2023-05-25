@@ -25,20 +25,22 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Name</th>
         <th>UnitName</th>
-        <th>No. Of Applications</th>
+        <th>courseDescription</th>
         <th>Roles</th>
       </tr>
     </thead>
     <tbody>
-      {% for joblisting in joblistings %}
+      {% for joblisting in table_data %}
       <tr>
         <td>{{ joblisting.pk}}</td>
-        <td>{{ joblisting.first_name}}</td>
         <td>{{ joblisting.UnitName}}</td>
-        <td>{{ joblisting.num_applications}}</td>
-        <td>{{ joblisting.roles}}</td>
+        <td>{{ joblisting.course_description}}</td>
+        <td>{{ joblisting.required_qualification}}</td>
+        <td>{{ joblisting.teaching_materials}}</td>
+        <td>{{ joblisting.session_times}}</td>
+        <td>{{ joblisting.responsibilities}}</td>
+        <td>{{ joblisting.benefits}}</td>
       </tr>
       {% endfor %}
     </tbody>

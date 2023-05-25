@@ -45,8 +45,8 @@ def sessionalapplicant(request):
 def viewapplication(request):
     return render(request, 'viewapplication.html')
 
-def createjob(request):
-    return render(request, 'createjob.html')
+# def createjob(request):
+#     return render(request, 'createjob.html')
 
 def applicantjobdetail(request):
     return render(request, 'applicantjobdetail.html')
@@ -134,14 +134,28 @@ def job_listing(request):
      return render(request, 'joblisting.html', context)
 
 
-class CreateJobView(FormView):
-    def get(self, request):
-        form = CreateJobForm()
-        return render(request, 'createjob.html', {'form': form})
+def createjob(request):
+    if request.method == 'POST':
+        unit_name = request.POST.get('unitName')
+        course_description = request.POST.get('courseDescription')
+        required_qualification = request.POST.get('requiredQualification')
+        teaching_materials = request.POST.get('teachingMaterials')
+        session_times = request.POST.get('sessionTimes')
+        responsibilities = request.POST.get('responsibilities')
+        benefits = request.POST.get('benefits')
 
-    def post(self, request):
-        form = CreateJobForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('job_listing')  # Redirect to the job listing page
-        return render(request, 'createjob.html', {'form': form})
+        # Create a new JobListing object and save it to the database
+        job_listing = JobListing(
+            unit_name=unit_name,
+            course_description=course_description,
+            required_qualification=required_qualification,
+            teaching_materials=teaching_materials,
+            session_times=session_times,
+            responsibilities=responsibilities,
+            benefits=benefits
+        )
+        job_listing.save()
+
+        return redirect('jobListing')  # Redirect to jobListing URL
+
+    return render(request, 'createjob.html')

@@ -16,7 +16,7 @@ class SessionalStaffUserAdmin(admin.ModelAdmin):
     list_display = ('week_availability','days_of_week','timing','preferred_unit','preferred_location','preferred_teaching_styles')
 
 class JobListingAdmin(admin.ModelAdmin):
-    list_display = ('sessional_staff','first_name','UnitName','num_applications','roles',)
+    list_display = ('unit_name','course_description','required_qualification','teaching_materials','session_times','responsibilities','benefits')
 
 # Register your models here.
 admin.site.register(UserProfile, UserProfileAdmin)
