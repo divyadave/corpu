@@ -58,6 +58,9 @@ def createjob(request):
 def applicantjobdetail(request):
     return render(request, 'applicantjobdetail.html')
 
+def contact(request):
+    return render(request, 'contact.html')
+
 
 class CustomLogin(LoginView):
     template_name = 'login.html'
@@ -140,5 +143,19 @@ def about(request):
     return render(request, 'about.html')
 
 
-def contact(request):
-    return render(request, 'contact.html')
+def job_listing(request):
+     table_data = JobListing.objects.all()
+     context = {'table_data': table_data}
+     return render(request, 'joblisting.html', context)
+
+class CreateJobView(FormView):
+    def get(self, request):
+        form = CreateJobForm()
+        return render(request, 'createjob.html', {'form': form})
+
+    def post(self, request):
+        form = CreateJobForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('joblisting')  # Redirect to the job listing page
+        return render(request, 'createjob.html', {'form': form})

@@ -28,7 +28,7 @@
           </div>
           <div class="form-outline mb-4">
             <label class="form-label">Name<span class="text-danger">*</span></label>
-            <input type="text" class="form-control form-control-lg" name="name" value="{{ form.name.value }}" placeholder="Enter a username" required>
+            <input type="text" class="form-control form-control-lg" name="name" value="{{ request.post.username }}" placeholder="Enter a username" required>
           </div>
           <div class="form-outline mb-3">
             <label class="form-label">Password<span class="text-danger">*</span></label>
