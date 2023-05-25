@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import UserProfile, PermanentStaff, SessionalStaff, Unit, SessionalApplication, Availibility, SessionalStaffUser
+from .models import UserProfile, PermanentStaff, SessionalStaff, Unit, SessionalApplication, Availibility, SessionalStaffUser , JobListing
 
 # Define admin view for models
 class UserProfileAdmin(admin.ModelAdmin):
@@ -12,7 +12,7 @@ class SessionalStaffAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'last_name', 'email', 'qualifications', 'availability')
 
 class UnitAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+    list_display = ('UnitName',)
 
 class SessionalApplicationAdmin(admin.ModelAdmin):
     list_display = ('sessional_staff', 'unit', 'preferences')
@@ -24,6 +24,9 @@ class SessionalStaffUserAdmin(admin.ModelAdmin):
     list_display = ('email','password','phoneno','dob','gender','education','certification','work_experience',
         'week_availability','days_of_week','timing','preferred_unit','preferred_location','preferred_teaching_styles')
 
+class JobListingAdmin(admin.ModelAdmin):
+    list_display = ('sessional_staff','first_name','unit','num_applications','roles',)
+
 # Register your models here.
 admin.site.register(UserProfile, UserProfileAdmin)
 admin.site.register(PermanentStaff, PermanentStaffAdmin)
@@ -32,3 +35,4 @@ admin.site.register(SessionalApplication, SessionalApplicationAdmin)
 admin.site.register(Unit, UnitAdmin)
 admin.site.register(Availibility, AvailabilityAdmin)
 admin.site.register(SessionalStaffUser,SessionalStaffUserAdmin)
+admin.site.register(JobListing,JobListingAdmin)

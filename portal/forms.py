@@ -6,12 +6,20 @@ from django.contrib.auth.models import User
 from crispy_forms.helper import FormHelper 
 from crispy_forms.layout import Submit 
 
-class UnitForm(forms.ModelForm):
+from .models import JobListing
+from .models import CreateJob
+
+class CreateJobForm(forms.ModelForm):
+    class Meta:
+        model = CreateJob
+        fields = ['unit', 'course_description', 'required_qualification', 'teaching_materials', 'session_times', 'responsibilities', 'benefits']
+
+class UnitForm(forms.Form):
     class Meta:
         model = Unit
         # fields = ['unitName', 'courseDescription', 'requiredQualification', 'teachingMaterials',
         #          'sessionTimes', 'lecturer', 'lecturerEmail']
-        fields  = ['name']
+        fields  = ['UnitName','CourseDescription','RequiredQualification']
 
 class RegistrationForm(UserCreationForm):
   

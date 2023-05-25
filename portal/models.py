@@ -45,10 +45,17 @@ class SessionalStaffUser(models.Model):
 
 
 class Unit(models.Model):
-    name = models.CharField(max_length=255)
+    UnitName = models.CharField(max_length=255,null=True)
+    CourseDescription = models.TextField(max_length=255,null=True)
+    RequiredQualification = models.CharField(max_length=255,null=True)
+    teachingMaterials = models.CharField(max_length=255,null=True)
+    sessionTimes = models.CharField(max_length=255,null=True)
+    lecturer = models.CharField(max_length=255,null=True)
+    lecturerEmail = models.CharField(max_length=255,null=True)
+    
 
     def __str__(self):
-        return self.name
+        return self.Unitname
 
 
 class SessionalApplication(models.Model):
@@ -65,3 +72,27 @@ class Availibility(models.Model):
 
     def __str__(self) -> str:
         return f"{self.casual_id}"
+
+class JobListing(models.Model):
+    sessional_staff = models.ForeignKey(SessionalStaff, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=255, null=True, blank=True)
+    unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
+    num_applications = models.CharField(max_length=255)
+    roles = models.CharField(max_length=255)
+
+    def save(self, *args, **kwargs):
+        self.first_name = self.sessional_staff.first_name
+        super().save(*args, **kwargs)
+
+class CreateJob(models.Model):
+    unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
+    course_description = models.TextField(max_length=255 , null=True)
+    required_qualification = models.CharField(max_length=255)
+    teaching_materials = models.CharField(max_length=255)
+    session_times = models.CharField(max_length=255)
+    responsibilities = models.TextField()
+    benefits = models.TextField()
+
+    def __str__(self):
+        return self.unit.UnitName
+    
