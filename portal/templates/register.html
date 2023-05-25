@@ -1,5 +1,3 @@
-<!-- register.html -->
-
 {% extends 'main.html' %}
 
 {% load static %}
@@ -9,7 +7,7 @@
   <div class="container-fluid h-custom">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-md-9 col-lg-6 col-xl-5">
-        <img src="{% static 'images/register.jpeg' %}"  class="img-fluid" alt="Sample image">
+        <img src="{% static 'images/register.jpeg' %}" class="img-fluid" alt="Sample image">
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
         {% if form.errors %}
@@ -21,22 +19,22 @@
             {% endfor %}
           </div>
         {% endif %}
-        <form style="border: 1px solid #9e9e9e8d; border-radius: 12px; padding: 40px 20px; box-shadow: 5px 5px 5px 5px #9e9e9e8d;" method="post">
+        <form style="border: 1px solid #9e9e9e8d; border-radius: 12px; padding: 40px 20px; box-shadow: 5px 5px 5px 5px #9e9e9e8d;" method="POST">
           {% csrf_token %}
           <div class="mb-4">
             <h4>Registration Form</h4>
           </div>
           <div class="form-outline mb-4">
             <label class="form-label">Name<span class="text-danger">*</span></label>
-            <input type="text" class="form-control form-control-lg" name="name" value="{{ form.name.value }}" placeholder="Enter a username" required>
+            {{ form.username }}
           </div>
           <div class="form-outline mb-3">
             <label class="form-label">Password<span class="text-danger">*</span></label>
-            <input type="password" class="form-control form-control-lg" name="password" placeholder="Enter your password" required>
+            {{ form.password1 }}
           </div>
           <div class="form-outline mb-3">
             <label class="form-label">Confirm Password<span class="text-danger">*</span></label>
-            <input type="password" class="form-control form-control-lg" name="password_confirm" placeholder="Retype your password" required>
+            {{ form.password2 }}
           </div>
           <div class="text-center text-lg-start mt-4">
             <button type="submit" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">Register</button>
