@@ -33,6 +33,7 @@
 <h3 class="text-center">Post a Job</h3>
   <div class="container mt-5">
     <form id="unitForm" method="POST">
+      {% csrf_token %}
       <div class="form-group">
         <label for="unitName">Unit Name:</label>
         <textarea class="form-control" id="unitName" name="unitName" rows="3"></textarea>
