@@ -12,7 +12,7 @@ from .models import CreateJob
 class CreateJobForm(forms.ModelForm):
     class Meta:
         model = CreateJob
-        fields = ['unit', 'course_description', 'required_qualification', 'teaching_materials', 'session_times', 'responsibilities', 'benefits']
+        fields = ['course_description', 'required_qualification', 'teaching_materials', 'session_times', 'responsibilities', 'benefits']
 
 
 

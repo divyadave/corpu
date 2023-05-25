@@ -24,11 +24,11 @@ from .forms import CreateJobForm
 def dashboard(request):
     return render(request, 'dashboard.html')
 
-def joblisting(request):
-    return render(request, 'joblisting.html')
+# def joblisting(request):
+#     return render(request, 'joblisting.html')
 
-def listofjobs(request):
-    return render(request, 'listofjobs.html')
+# def listofjobs(request):
+#     return render(request, 'listofjobs.html')
 
 def viewjob(request):
     return render(request, 'viewjob.html')
@@ -47,7 +47,6 @@ def viewapplication(request):
 
 def createjob(request):
     return render(request, 'createjob.html')
-
 
 def applicantjobdetail(request):
     return render(request, 'applicantjobdetail.html')
@@ -92,15 +91,15 @@ def main(request):
 
 @login_required
 
-def apply_view(request):
-    if request.method == 'POST':
-        form = UnitForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return render(request, 'success.html')
-    else:
-        form = UnitForm()
-    return render(request, 'success.html', {'form': form})
+# def apply_view(request):
+#     if request.method == 'POST':
+#         form = UnitForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return render(request, 'success.html')
+#     else:
+#         form = UnitForm()
+#     return render(request, 'success.html', {'form': form})
 
 def user_form(request):
     if request.method == 'POST':
@@ -128,9 +127,9 @@ def login(request):
 
         return render(request, 'login.html', {'form': form})
 
-def job_listing(request):
+def jobListing(request):
     joblistings = JobListing.objects.all()
-    return render(request, 'listofjobs.html', {'joblistings': joblistings})
+    return render(request, 'joblisting.html', {'joblistings': joblistings})
 
 class CreateJobView(View):
     def get(self, request):

@@ -5,53 +5,45 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light header">
+      <div class="container-fluid">
+        <a class="navbar-brand" style="position: absolute; left: 0; margin-left: 5px;" href="{% url 'home' %}">Corpu</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+      </div>
+    </nav>
+    </header>
 <div class="container">
-  <h2>Job Listings</h2>
+  <div class="card">
+  <h3>Job Listings</h3>
                                                    
-  <div class="table-responsive">          
-  <table class="table">
+  <div class="table-responsive mt-3">          
+  <table class="table table-primary">
     <thead>
       <tr>
-        <th>#</th>
-        <th>Job Title</th>
-        <th>Unit</th>
-        <th>Applications</th>
-        <th>Status</th>
-        <th>Action</th>
-        <th>Action</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>UnitName</th>
+        <th>No. Of Applications</th>
+        <th>Roles</th>
       </tr>
     </thead>
     <tbody>
+      {% for joblisting in joblistings %}
       <tr>
-        <td>1</td>
-        <td>Tutor</td>
-        <td>Artificial Intelligence</td>
-        <td>10</td>
-        <td>Live</td>
-        <td><a href="#" class="link-primary">View</a></td>
-        <td><a href="#" class="link-primary">Edit</a></td>
+        <td>{{ joblisting.pk}}</td>
+        <td>{{ joblisting.first_name}}</td>
+        <td>{{ joblisting.UnitName}}</td>
+        <td>{{ joblisting.num_applications}}</td>
+        <td>{{ joblisting.roles}}</td>
       </tr>
-       <tr>
-        <td>1</td>
-        <td>Tutor</td>
-        <td>Artificial Intelligence</td>
-        <td>10</td>
-        <td>Live</td>
-        <td><a href="#" class="link-primary">View</a></td>
-        <td><a href="#" class="link-primary">Edit</a></td>
-      </tr>
-     <tr>
-        <td>1</td>
-        <td>Tutor</td>
-        <td>Artificial Intelligence</td>
-        <td>10</td>
-        <td>Live</td>
-        <td><a href="#" class="link-primary">View</a></td>
-        <td><a href="#" class="link-primary">Edit</a></td>
-      </tr>
+      {% endfor %}
     </tbody>
   </table>
+  </div>
   </div>
 </div>
 {% endblock content %}
