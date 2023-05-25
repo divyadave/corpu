@@ -99,7 +99,7 @@ def unit_page(request):
             return render(request, 'success.html')
         else:
             form = UnitForm()
-        return render(request, 'unit_page.html', {'form': form})
+        return render(request, 'unit_page.html', {'units': units})
 
 
 def apply_view(request):
@@ -140,16 +140,16 @@ def login(request):
 
 def job_listing(request):
     joblistings = JobListing.objects.all()
-    return render(request, 'job_listing.html', {'joblistings': joblistings})
+    return render(request, 'listofjobs.html', {'joblistings': joblistings})
 
 class CreateJobView(View):
     def get(self, request):
         form = CreateJobForm()
-        return render(request, 'create_job.html', {'form': form})
+        return render(request, 'createjob.html', {'form': form})
 
     def post(self, request):
         form = CreateJobForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('job_listing')  # Redirect to the job listing page
-        return render(request, 'create_job.html', {'form': form})
+        return render(request, 'createjob.html', {'form': form})
