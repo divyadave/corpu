@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import UserProfile, PermanentStaff, SessionalStaff, Unit, SessionalApplication, Availibility, SessionalStaffUser , JobListing
+from .models import UserProfile, PermanentStaff, SessionalStaff, SessionalApplication, Availibility, SessionalStaffUser , JobListing
 
 # Define admin view for models
 class UserProfileAdmin(admin.ModelAdmin):
@@ -11,8 +11,8 @@ class PermanentStaffAdmin(admin.ModelAdmin):
 class SessionalStaffAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'last_name', 'email', 'qualifications', 'availability')
 
-class UnitAdmin(admin.ModelAdmin):
-    list_display = ('UnitName',)
+# class UnitAdmin(admin.ModelAdmin):
+#     list_display = ('UnitName',)
 
 class SessionalApplicationAdmin(admin.ModelAdmin):
     list_display = ('sessional_staff', 'unit', 'preferences')
@@ -32,7 +32,7 @@ admin.site.register(UserProfile, UserProfileAdmin)
 admin.site.register(PermanentStaff, PermanentStaffAdmin)
 admin.site.register(SessionalStaff,SessionalStaffAdmin)
 admin.site.register(SessionalApplication, SessionalApplicationAdmin)
-admin.site.register(Unit, UnitAdmin)
+# admin.site.register(Unit, UnitAdmin)
 admin.site.register(Availibility, AvailabilityAdmin)
 admin.site.register(SessionalStaffUser,SessionalStaffUserAdmin)
 admin.site.register(JobListing,JobListingAdmin)

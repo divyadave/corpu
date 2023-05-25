@@ -1,5 +1,5 @@
 from django import forms
-from .models import Unit
+
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -14,12 +14,7 @@ class CreateJobForm(forms.ModelForm):
         model = CreateJob
         fields = ['unit', 'course_description', 'required_qualification', 'teaching_materials', 'session_times', 'responsibilities', 'benefits']
 
-class UnitForm(forms.Form):
-    class Meta:
-        model = Unit
-        # fields = ['unitName', 'courseDescription', 'requiredQualification', 'teachingMaterials',
-        #          'sessionTimes', 'lecturer', 'lecturerEmail']
-        fields  = ['UnitName','CourseDescription','RequiredQualification']
+
 
 class RegistrationForm(UserCreationForm):
   
