@@ -1,72 +1,56 @@
 {% extends 'main.html' %}
 {% block content %}
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light header">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'home' %}">Corpu</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'unit_page' %}">Units</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'unit_page' %}">Staffs</a>
-          </li>
-        
-          
-        </ul>
-        <div class="ml-auto">
-          {% if request.user.is_authenticated %}
-          <a href="{% url 'logout' %}"  style="cursor: pointer;"  class="btn btn-primary border-width-2"><span class="mr-2 icon-paper-plane"></span>Logout</a>
-          {% else %}
-          <a href="{% url 'login' %}"  style="cursor: pointer;"  class="btn btn-primary border-width-2"><span class="mr-2 icon-paper-plane"></span>Login</a>
-          {% endif %}
-          <label class="toggle">
-            <input type="checkbox" id="theme-toggle">
-            <div class="toggle-switch"></div>
-           
-          </label>
-         
-          
-          </div>
-        
+    <nav class="navbar navbar-expand-lg navbar-light bg-light header">
+      <div class="container-fluid">
+        <a class="navbar-brand" style="position: absolute; left: 0; margin-left: 5px;" href="{% url 'home' %}">Corpu</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
       </div>
-    </div>
-  </nav>
-  </header>
-
+    </nav>
+    </header>
 <div class="container">
-  <h2>Job Listings</h2>
+  <div class="card">
+  <h3>Job Listings</h3>
                                                    
-  <div class="table-responsive">  
-    <table class="table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Job Title</th>
-          <th>Unit</th>
-          <th>Applications</th>
-          <th>Status</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-          {% for row in table_data %}
-              <tr>
-                  <td>{{ row.column1 }}</td>
-                  <td>{{ row.column2 }}</td>
-                  <!-- Display additional row fields as needed -->
-                  <td><a  class="link-primary" href="{% url 'table_row_page' row.id %}">View Details</a></td>
-                  
-              </tr>
-          {% endfor %}
-      </tbody>
-  </table>        
- 
+  <div class="table-responsive mt-3">          
+  <table class="table table-primary">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>UnitName</th>
+        <th>Course Description</th>
+        <th>Required Qualifications</th>
+        <th>Teaching Materials</th>
+        <th>Session Times</th>
+        <th>Responsibilities</th>
+        <th>Benefits</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for joblisting in table_data %}
+      <tr>
+        <td>{{ joblisting.pk}}</td>
+        <td>{{ joblisting.UnitName}}</td>
+        <td>{{ joblisting.course_description}}</td>
+        <td>{{ joblisting.required_qualification}}</td>
+        <td>{{ joblisting.teaching_materials}}</td>
+        <td>{{ joblisting.session_times}}</td>
+        <td>{{ joblisting.responsibilities}}</td>
+        <td>{{ joblisting.benefits}}</td>
+        <td><a href="{% url 'profile' %}">Apply</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
   </div>
 </div>
 {% endblock content %}

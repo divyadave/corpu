@@ -15,27 +15,17 @@ class Staff(models.Model):
     email = models.EmailField( max_length=255, unique=True)
     qualifications = models.TextField()
     availability = models.TextField()
+    phoneno = models.CharField(max_length=10)
+    dob = models.DateField()
+    gender = models.CharField(max_length=10)
+    certification = models.CharField(max_length=255)
+    work_experience = models.TextField()
 
     class Meta:
         abstract = True
 
 
-class PermanentStaff(Staff):
-    units = models.ManyToManyField('Unit', related_name='permanent_staff')
-
-
-class SessionalStaff(Staff):
-    units = models.ManyToManyField('Unit', related_name='sessional_staff')
-
-class SessionalStaffUser(models.Model):
-    email = models.EmailField()
-    password = models.CharField(max_length=255)
-    phoneno = models.CharField(max_length=10)
-    dob = models.DateField()
-    gender = models.CharField(max_length=10)
-    education = models.CharField(max_length=255)
-    certification = models.CharField(max_length=255)
-    work_experience = models.TextField()
+class SessionalStaffUser(Staff):
     week_availability = models.CharField(max_length=255)
     days_of_week = models.CharField(max_length=255)
     timing = models.TimeField()
@@ -44,55 +34,48 @@ class SessionalStaffUser(models.Model):
     preferred_teaching_styles = models.CharField(max_length=255)
 
 
-class Unit(models.Model):
-    UnitName = models.CharField(max_length=255,null=True)
-    CourseDescription = models.TextField(max_length=255,null=True)
-    RequiredQualification = models.CharField(max_length=255,null=True)
-    teachingMaterials = models.CharField(max_length=255,null=True)
-    sessionTimes = models.CharField(max_length=255,null=True)
-    lecturer = models.CharField(max_length=255,null=True)
-    lecturerEmail = models.CharField(max_length=255,null=True)
-    
-
-    def __str__(self):
-        return self.Unitname
-
-
 class SessionalApplication(models.Model):
-    sessional_staff = models.ForeignKey(SessionalStaff, on_delete=models.CASCADE)
-    unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
+    sessional_staff = models.ForeignKey(SessionalStaffUser, on_delete=models.CASCADE)
+    UnitName = models.CharField(max_length=255)
     preferences = models.TextField()
 
-class Availibility(models.Model):
-    casual_id = models.ForeignKey(SessionalStaff, on_delete=models.CASCADE)
-    day_of_the_week = models.DateField()
-    start_time = models.TimeField()
-    end_time = models.TimeField()
-    id = models.AutoField(primary_key=True, default=999)
+# class Availibility(models.Model):
+#     casual_id = models.ForeignKey(SessionalStaffUser, on_delete=models.CASCADE)
+   
+#     id = models.AutoField(primary_key=True, default=999)
 
-    def __str__(self) -> str:
-        return f"{self.casual_id}"
+# class JobListing(models.Model):
+#     sessional_staff = models.ForeignKey(SessionalStaffUser, on_delete=models.CASCADE)
+#     first_name = models.CharField(max_length=255, null=True, blank=True)
+#     UnitName = models.CharField(max_length=255)
+#     num_applications = models.CharField(max_length=255)
+#     roles = models.CharField(max_length=255)
+
+#     def __str__(self):
+#         return self.sessional_staff.first_name
+
+#     def save(self, *args, **kwargs):
+#         self.first_name = self.sessional_staff.first_name
+#         super().save(*args, **kwargs)
 
 class JobListing(models.Model):
-    sessional_staff = models.ForeignKey(SessionalStaff, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=255, null=True, blank=True)
-    unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
-    num_applications = models.CharField(max_length=255)
-    roles = models.CharField(max_length=255)
+    unit_name = models.TextField()
+    course_description = models.TextField()
+    required_qualification = models.CharField(max_length=100)
+    teaching_materials = models.CharField(max_length=100)
+    session_times = models.CharField(max_length=100)
+    responsibilities = models.CharField(max_length=100)
+    benefits = models.CharField(max_length=100)
 
-    def save(self, *args, **kwargs):
-        self.first_name = self.sessional_staff.first_name
-        super().save(*args, **kwargs)
+    def __str__(self):
+        return self.unit_name
 
 class CreateJob(models.Model):
-    unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
+    UnitName = models.CharField(max_length=255)
     course_description = models.TextField(max_length=255 , null=True)
     required_qualification = models.CharField(max_length=255)
     teaching_materials = models.CharField(max_length=255)
     session_times = models.CharField(max_length=255)
     responsibilities = models.TextField()
     benefits = models.TextField()
-
-    def __str__(self):
-        return self.unit.UnitName
     

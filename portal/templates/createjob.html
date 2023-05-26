@@ -1,6 +1,10 @@
-
 {% extends 'main.html' %}
 {% block content %}
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
 <header>
   <nav class="navbar navbar-expand-lg navbar-light bg-light header">
     <div class="container-fluid">
@@ -11,14 +15,6 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'unit_page' %}">Units</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'unit_page' %}">Staffs</a>
-          </li>
-        
-          
         </ul>
         <div class="ml-auto">
           {% if request.user.is_authenticated %}
@@ -26,13 +22,6 @@
           {% else %}
           <a href="{% url 'login' %}"  style="cursor: pointer;"  class="btn btn-primary border-width-2"><span class="mr-2 icon-paper-plane"></span>Login</a>
           {% endif %}
-          <label class="toggle">
-            <input type="checkbox" id="theme-toggle">
-            <div class="toggle-switch"></div>
-           
-          </label>
-         
-          
           </div>
         
       </div>
@@ -40,15 +29,13 @@
   </nav>
   </header>
 <div style="margin-top: 70px; ">
-<h3 class="text-center" style="font-weight: 600;">Post a Job</h3>
+<h3 class="text-center">Post a Job</h3>
   <div class="container mt-5">
-    <form id="unitForm" method="POST" action="{% url 'apply' %}">
+    <form id="unitForm" method="POST" action="{% url 'createjob' %}">
       {% csrf_token %}
       <div class="form-group">
         <label for="unitName">Unit Name:</label>
-        
         <textarea class="form-control" id="unitName" name="unitName" rows="3"></textarea>
-        </select>
       </div>
       <div class="form-group">
         <label for="courseDescription">Course Description:</label>
@@ -67,11 +54,11 @@
         <input type="text" class="form-control" id="sessionTimes" name="sessionTimes">
       </div>
       <div class="form-group">
-        <label for="Responsibilities">Responsibilities:</label>
+        <label for="responsibilities">Responsibilities:</label>
         <input type="text" class="form-control" id="responsibilities" name="responsibilities">
       </div>
       <div class="form-group">
-        <label for="lecturerEmail">Benefits:</label>
+        <label for="benefits">Benefits:</label>
         <input type="text" class="form-control" id="benefits" name="benefits">
       </div>
       <button type="submit" class="btn btn-primary">Post</button>
@@ -81,4 +68,3 @@
 
 
 {% endblock content %}
-

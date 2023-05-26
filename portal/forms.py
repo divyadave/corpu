@@ -1,5 +1,5 @@
 from django import forms
-from .models import Unit
+
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -8,23 +8,34 @@ from django.contrib.auth.models import User
 
 from .models import JobListing
 from .models import CreateJob
+from .models import Staff
 
 
 class CreateJobForm(forms.ModelForm):
     class Meta:
         model = CreateJob
+<<<<<<< HEAD
         fields = ['unit', 'course_description', 'required_qualification',
                   'teaching_materials', 'session_times', 'responsibilities', 'benefits']
 
+=======
+        fields = ['course_description', 'required_qualification', 'teaching_materials', 'session_times', 'responsibilities', 'benefits']
+>>>>>>> 334c92b0b1c94dcc2ffe6e56eab063f3e739840c
 
-class UnitForm(forms.Form):
+class CreateProfile(forms.ModelForm):
     class Meta:
+<<<<<<< HEAD
         model = Unit
         # fields = ['unitName', 'courseDescription', 'requiredQualification', 'teachingMaterials',
         #          'sessionTimes', 'lecturer', 'lecturerEmail']
         fields = ['UnitName', 'CourseDescription', 'RequiredQualification']
 
 
+=======
+        model = Staff
+        fields = ['first_name', 'last_name', 'email', 'qualifications', 'availability', 'phoneno', 'dob', 'gender', 'certification', 'work_experience']
+    
+>>>>>>> 334c92b0b1c94dcc2ffe6e56eab063f3e739840c
 class RegistrationForm(UserCreationForm):
     class Meta:
         model = User

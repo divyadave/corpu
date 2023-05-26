@@ -1,8 +1,6 @@
 {% extends 'main.html' %}
-
-{% load static %}
-
 {% block content %}
+<<<<<<< HEAD
 <section class="vh-100">
   <div class="container-fluid h-custom">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -50,3 +48,17 @@
   </div>
 </section>
 {% endblock %}
+=======
+<div class="row">
+    <div class="col-md-6 mx-auto">
+<h1>Register Form</h1> 
+<form method="POST" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Register">
+</form>
+<p>Already have an account? <a href="/login">Login</a></p>
+</div>
+</div>
+{% endblock content %}
+>>>>>>> 334c92b0b1c94dcc2ffe6e56eab063f3e739840c
