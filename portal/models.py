@@ -39,12 +39,10 @@ class SessionalApplication(models.Model):
     UnitName = models.CharField(max_length=255)
     preferences = models.TextField()
 
-class Availibility(models.Model):
-    casual_id = models.ForeignKey(SessionalStaffUser, on_delete=models.CASCADE)
-    day_of_the_week = models.DateField()
-    start_time = models.TimeField()
-    end_time = models.TimeField()
-    id = models.AutoField(primary_key=True, default=999)
+# class Availibility(models.Model):
+#     casual_id = models.ForeignKey(SessionalStaffUser, on_delete=models.CASCADE)
+   
+#     id = models.AutoField(primary_key=True, default=999)
 
 # class JobListing(models.Model):
 #     sessional_staff = models.ForeignKey(SessionalStaffUser, on_delete=models.CASCADE)
