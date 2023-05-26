@@ -5,7 +5,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     # Add additional fields for the user's profile
 
-    def __str__(self):
+    def _str_(self):
         return self.user.username
     
 
@@ -51,7 +51,7 @@ class SessionalApplication(models.Model):
 #     num_applications = models.CharField(max_length=255)
 #     roles = models.CharField(max_length=255)
 
-#     def __str__(self):
+#     def _str_(self):
 #         return self.sessional_staff.first_name
 
 #     def save(self, *args, **kwargs):
@@ -67,15 +67,14 @@ class JobListing(models.Model):
     responsibilities = models.CharField(max_length=100)
     benefits = models.CharField(max_length=100)
 
-    def __str__(self):
+    def _str_(self):
         return self.unit_name
 
 class CreateJob(models.Model):
-    UnitName = models.CharField(max_length=255)
+    unit_name = models.CharField(max_length=255)
     course_description = models.TextField(max_length=255 , null=True)
     required_qualification = models.CharField(max_length=255)
     teaching_materials = models.CharField(max_length=255)
     session_times = models.CharField(max_length=255)
     responsibilities = models.TextField()
     benefits = models.TextField()
-    

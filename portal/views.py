@@ -24,6 +24,12 @@ from .forms import CreateJobForm
 def dashboard(request):
     return render(request, 'dashboard.html')
 
+def contact(request):
+    return render(request, 'contact.html')
+
+def about(request):
+    return render(request, 'about.html')
+
 def success(request):
     return render(request, 'success.html')
 
@@ -130,7 +136,7 @@ def login(request):
 
         return render(request, 'login.html', {'form': form})
 
-@login_required
+
 def job_listing(request):
      table_data = JobListing.objects.all()
      context = {'table_data': table_data}
@@ -164,11 +170,9 @@ def createjob(request):
     return render(request, 'createjob.html')
 
 class CreateProfile(FormView):
-    def get(self, request):
-        form = CreateProfile()
-        return render(request, 'profile.html', {'form': form})
 
     def post(self, request):
+        print('request', request)
         form = CreateProfile(request.POST)
         print('form', form)
         if form.is_valid():
