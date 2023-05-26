@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import UserProfile,SessionalApplication, Availibility, SessionalStaffUser , JobListing
+from .models import UserProfile,SessionalApplication, SessionalStaffUser , JobListing
 
 # Define admin view for models
 class UserProfileAdmin(admin.ModelAdmin):
@@ -21,6 +21,5 @@ class JobListingAdmin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(UserProfile, UserProfileAdmin)
 admin.site.register(SessionalApplication, SessionalApplicationAdmin)
-admin.site.register(Availibility, AvailabilityAdmin)
 admin.site.register(SessionalStaffUser,SessionalStaffUserAdmin)
 admin.site.register(JobListing,JobListingAdmin)
